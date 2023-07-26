@@ -1,8 +1,16 @@
-import React, { useState } from 'react';
-import { View, TextInput, TouchableOpacity, Text, StyleSheet } from 'react-native';
-export default function name(){
+import React, { useState,useEffect } from 'react';
+import { View, TextInput, TouchableOpacity, Text, StyleSheet,StatusBar,Image,KeyboardAvoidingView} from 'react-native';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
+import { Bar } from 'react-native-progress'; 
+
+
+export default function name(props){
     const [name, setName] = useState('');
     const [gender, setGender] = useState('');
+    const [progress, setProgress] = useState(0.1);
+
     const [isDropdownVisible, setIsDropdownVisible] = useState(false);
   
     const handleNameChange = (text) => {
@@ -13,17 +21,51 @@ export default function name(){
       setGender(selectedGender);
       setIsDropdownVisible(false);
     };
+    const increaseProgress = () => {
+      if (progress < 1) {
+        // Increase the progress by 0.1 in each step
+        setProgress(prevProgress => Math.min(prevProgress + 0.1, 1));
+      };
+    };
+    const next=()=>{
+      props.navigation.navigate('organizationaldetail');
+    };
+    const isname=name.trim() !== '';
+    const isgender=gender.trim() !== '';
+    useEffect(() => {
+      // You can also use this effect to reset the progress when needed.
+      // For example, if the progress should reset to 0 after some action is completed.
+      if (progress === 1) {
+        setProgress(0);
+      }
+    }, [progress]);
   
-    const handleSaveData = () => {
-      console.log('Name:', name);
-      console.log('Gender:', gender);
-        };
+    // const handleSaveData = () => {
+    //   console.log('Name:', name);
+    //   console.log('Gender:', gender);
+    //     };
   
     return (
       <View style={styles.container}>
-        <Text style={{color:'#050507',fontWeight:700}}>Personal Details</Text>
-        <Text style={{color:'#272727',fontWeight:500}}>Enter your personal details to setup your account</Text>
+        <StatusBar
+        backgroundColor="transparent"
+        barStyle="dark-content"
+        hidden={false}
+        translucent={true}
+      />
+      <View style={{top:1,right:23}}>
+      <TouchableOpacity onPress={()=>{props.navigation.navigate('login')}}>
+      <Image source={require('../../assets/images/backicon.png')} />
+      </TouchableOpacity>
+      </View>
+        {/* <Text style={{color:'#050507',fontWeight:'bold',fontsize:'20',top:-50}}>Personal Details</Text> */}
+        <Text style={styles.text}>personal Details</Text>
+      <View style={{ height:60, width: '100%', backgroundColor: '#fff' ,justifyContent: 'center', alignItems: 'center' ,position: 'relative'}}>
+        <Bar progress={progress} width={300} borderWidth={0} unfilledColor="#ccc" style={{position: 'absolute', top: 0}}/>
+      </View>
+        <Text style={{color:'#272727',fontsize:40,top:-100}}>Enter your personal details to setup your account</Text>
         <Text style={styles.textTitle}>Your Name</Text>
+        {/* <View style={{backgroundColor:'#F0F0F0'}}> */}
         <TextInput
           style={styles.input}
           onChangeText={handleNameChange}
@@ -31,6 +73,7 @@ export default function name(){
           placeholder="Enter your name"
           placeholderTextColor="#8B8F93"
         />
+        {/* </View> */}
         <Text style={styles.textTitle}>Select Gender</Text>
         <TouchableOpacity
           style={styles.dropdownButton}
@@ -39,21 +82,24 @@ export default function name(){
           <Text style={{color:'#8B8F93'}}>{gender === '' ? 'Select your Gender' : gender}</Text>
         </TouchableOpacity>
         {isDropdownVisible && (
+    
           <View style={styles.dropdownContainer}>
             <TouchableOpacity onPress={() => handleGenderSelection('Male')}>
-              <Text>Male</Text>
+              <Text style={{color:'black'}}>Male</Text>
             </TouchableOpacity>
             <TouchableOpacity onPress={() => handleGenderSelection('Female')}>
-              <Text>Female</Text>
+              <Text style={{color:'black'}}>Female</Text>
             </TouchableOpacity>
             <TouchableOpacity onPress={() => handleGenderSelection('Other')}>
-              <Text>Other</Text>
+              <Text style={{color:'black'}}>Other</Text>
             </TouchableOpacity>
           </View>
         )}
-        <TouchableOpacity style={styles.saveButton} onPress={handleSaveData}>
+        <View style={{marginBottom:60}}>
+        <TouchableOpacity style={styles.saveButton} onPress={next} disabled={!isname || !isgender}>
           <Text>Continue</Text>
         </TouchableOpacity>
+      </View>
       </View>
     );
   };
@@ -63,6 +109,14 @@ export default function name(){
       justifyContent: 'center',
       //alignItems: 'center',
       padding: 20,
+      backgroundColor:'white'
+    },
+    text: {
+      fontSize: 25,
+      fontWeight: 'bold',
+      color:'black',
+      fontFamily: 'Merriweather',
+      top:-90
     },
     textTitle: {
         marginBottom: 10,
@@ -74,36 +128,44 @@ export default function name(){
     input: {
       width: '100%',
       height: 40,
-      borderColor: 'gray',
-      borderWidth: 1,
+     // borderColor: 'gray',
+     // borderWidth: 1,
       paddingHorizontal: 10,
       marginBottom: 20,
-      color:'black'
+      color:'black',
+      backgroundColor:'#F0F0F0',
+      borderRadius:10
     },
     dropdownButton: {
       width: '100%',
       height: 40,
       borderColor: 'gray',
-      borderWidth: 1,
+     // borderWidth: 1,
       justifyContent: 'center',
       alignItems: 'center',
       marginBottom: 20,
+      backgroundColor:'#F0F0F0',
+      borderRadius:10
     },
     dropdownContainer: {
       width: '100%',
-      borderColor: 'gray',
-      borderWidth: 1,
+     // borderColor: 'gray',
+     // borderWidth: 1,
      // justifyContent: 'center',
       alignItems: 'center',
-      text:'black'
+     // text:'black',
+     // backgroundColor:'blue'
     },
     saveButton: {
       width: '100%',
       height: 40,
-      backgroundColor: 'blue',
+      //backgroundColor: 'blue',
       justifyContent: 'center',
       alignItems: 'center',
-      backgroundColor:'#AFAFAF'
+      backgroundColor:'#AFAFAF',
+      bottom:-200
+      //marginBottom:
+      
     },
   });
   

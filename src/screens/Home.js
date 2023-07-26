@@ -12,7 +12,7 @@ export default function Home(props)
             </TouchableOpacity>
             </View>
             <View style={styles.textContainer}>
-           
+                {/* <Text style={{fontFamily: 'Merriweather-Black'}} className='text-[#050507] bg-[#000] text-xs'>Magppie Planner</Text> */}
                 <Text style={styles.text}>Magppie Planner</Text>
                 <Text style={styles.Text}>A platform for employee task management</Text>
             </View>
@@ -44,7 +44,7 @@ const styles = StyleSheet.create({
       fontSize: 30,
       fontWeight: 'bold',
       color:'black',
-      fontStyle: 'Merriweather',
+      fontFamily: 'Merriweather',
     },
     Text:
     {
