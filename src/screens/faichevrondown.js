@@ -3,7 +3,6 @@ import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-nativ
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
-
 library.add(faChevronDown);
 const GenderSelection = () => {
     const [gender, setGender] = useState('');
@@ -21,6 +20,7 @@ const GenderSelection = () => {
         <TextInput
           style={styles.textInput}
           placeholder="Select Gender"
+          placeholderTextColor="black"
           value={gender}
           editable={false}
         />
@@ -43,12 +43,15 @@ const GenderSelection = () => {
   
   const styles = StyleSheet.create({
     container: {
-      position: 'relative',
+     // position: 'absolute',
+     justifyContent:'center',
+     alignItems:'center',
       width: '100%',
     },
     textInput: {
-      width: '100%',
+      width: '80%',
       height: 40,
+      top:70,
       paddingHorizontal: 16,
       borderWidth: 1,
       borderColor: '#ccc',
@@ -56,8 +59,8 @@ const GenderSelection = () => {
     },
     iconContainer: {
       position: 'absolute',
-      top: 10,
-      right: 10,
+      top: 80,
+      right: 40,
     },
     optionsContainer: {
       position: 'absolute',
@@ -70,11 +73,12 @@ const GenderSelection = () => {
       borderRadius: 5,
     },
     option: {
-      paddingHorizontal: 10,
-      paddingVertical: 8,
+      paddingHorizontal: 100,
+      paddingVertical: 50,
+      backgroundColor:'red'
     },
     optionText: {
-      fontSize: 0,
+      fontSize: 10,
     },
   });
   

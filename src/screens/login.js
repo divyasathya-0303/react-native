@@ -19,10 +19,10 @@ export default function Login(props) {
   const [num, setnum] = useState('');
   const [phonenumber, setphonenumber] = useState('');
   const [isValidEmail, setIsValidEmail] = useState(false);
+  const [isValidphnum, setIsValidphnum] = useState(false);
 
-  // Function to validate email using regular expression
-
-  const onchangephone = number => {
+  
+ const onchangephone = number => {
     setphonenumber(number);
   };
   const onchangeemail = email => {
@@ -31,12 +31,14 @@ export default function Login(props) {
 
   const onprss = () => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const phoneRegex = /^\d{10}$/;
     if (emailRegex.test(email)) {
       setIsValidEmail(false);
       props.navigation.navigate('OTPVerification');
     } else {
       setIsValidEmail(true);
     }
+
   };
   const onprsss=()=>{
     props.navigation.navigate('gender');
@@ -105,8 +107,8 @@ export default function Login(props) {
                   onChangeFormattedText={text => {
                     setphonenumber(text);
                   }}
-                  withDarkTheme
-                  placeholder='phone'
+                 // withDarkTheme
+                  placeholder='Enter Phone Number'
                   placeholderTextColor="#8B8F93"
                 />
               </View>
@@ -135,7 +137,7 @@ export default function Login(props) {
       <View style={styles.viewBottom}>
         <TouchableOpacity
           onPress={onprss}
-          style={[styles.button, !isEmailValid && styles.disabledButton]}
+         // style={[styles.button, !isEmailValid && styles.disabledButton]}
           disabled={!isEmailValid}>
           <View
             style={[

@@ -53,7 +53,7 @@ export default function name(props){
         hidden={false}
         translucent={true}
       />
-      <View style={{top:1,right:23}}>
+      <View style={{top:-60,right:20}}>
       <TouchableOpacity onPress={()=>{props.navigation.navigate('login')}}>
       <Image source={require('../../assets/images/backicon.png')} />
       </TouchableOpacity>
@@ -79,6 +79,9 @@ export default function name(props){
           style={styles.dropdownButton}
           onPress={() => setIsDropdownVisible(!isDropdownVisible)}
         >
+         {/* <TouchableOpacity style={styles.iconContainer} onPress={() => handleGenderSelection('')}>
+          <FontAwesomeIcon icon="chevron-down" size={20} color="#333" />
+        </TouchableOpacity> */}
           <Text style={{color:'#8B8F93'}}>{gender === '' ? 'Select your Gender' : gender}</Text>
         </TouchableOpacity>
         {isDropdownVisible && (
@@ -96,8 +99,20 @@ export default function name(props){
           </View>
         )}
         <View style={{marginBottom:60}}>
-        <TouchableOpacity style={styles.saveButton} onPress={next} disabled={!isname || !isgender}>
-          <Text>Continue</Text>
+        <TouchableOpacity 
+        //style={styles.saveButton} 
+        onPress={next} 
+        disabled={!isname || !isgender}>
+        <View
+          style={[
+            styles.btnContinue,
+            {
+              backgroundColor: isname && isgender ? '#434343' : '#AFAFAF',
+            },
+          ]}
+        >
+          <Text style={styles.textContinue}>Continue</Text>
+          </View>
         </TouchableOpacity>
       </View>
       </View>
@@ -116,7 +131,7 @@ export default function name(props){
       fontWeight: 'bold',
       color:'black',
       fontFamily: 'Merriweather',
-      top:-90
+      top:-90,
     },
     textTitle: {
         marginBottom: 10,
@@ -156,17 +171,28 @@ export default function name(props){
      // text:'black',
      // backgroundColor:'blue'
     },
-    saveButton: {
-      width: '100%',
-      height: 40,
-      //backgroundColor: 'blue',
-      justifyContent: 'center',
+    btnContinue: {
+      width: 320,
+      height: 50,
+      borderRadius: 10,
       alignItems: 'center',
-      backgroundColor:'#AFAFAF',
-      bottom:-200
-      //marginBottom:
-      
+      justifyContent: 'center',
+      bottom:-180
     },
+    textContinue: {
+      color: '#ffffff',
+      alignitem: 'center',
+    },
+    // saveButton: {
+    //   width: '100%',
+    //   height: 40,
+    //   //backgroundColor: 'blue',
+    //   justifyContent: 'center',
+    //   alignItems: 'center',
+    //   backgroundColor:'#AFAFAF',
+    //   bottom:-200
+    //   //marginBottom:
+    // },
   });
   
 

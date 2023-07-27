@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react';
-import { View, Text, TouchableOpacity, TextInput, StyleSheet } from 'react-native';
-
-const OtpPage = () => {
+import { View, Text, TouchableOpacity, TextInput, StyleSheet,Image} from 'react-native';
+import ProgressBar from '../components/Progressbar';
+const OtpPage = (props) => {
   const [otp, setOtp] = useState('');
   const otpInputRef = useRef([]);
   const handleOtpChange = (text, index) => {
@@ -10,17 +10,24 @@ const OtpPage = () => {
       otpArray[index] = text;
       return otpArray.join('');
     });
-
     if (text !== '' && index < otpInputRef.current.length - 1) {
       otpInputRef.current[index + 1].focus();
     }
   };
+  const onprs=()=>{
+   props.navigation.navigate('image');
+   };
   const handleSubmitOtp = () => {
     console.log('OTP submitted:', otp);
   };
-
   return (
     <View style={styles.container}>
+        <Text style={styles.text}>Email Id Verification</Text>
+       <View style={{top:55,right:150}}> 
+       <TouchableOpacity onPress={()=>{props.navigation.navigate('mobileverification')}}>
+      <Image source={require('../../assets/images/backicon.png')} />
+      </TouchableOpacity> 
+       </View> 
       <View style={styles.otpContainer}>
         {Array.from({ length: 4 }).map((_, index) => (
           <TextInput
@@ -34,15 +41,15 @@ const OtpPage = () => {
           />
         ))}
       </View>
-      <TouchableOpacity onPress={handleSubmitOtp} style={styles.button} >
+      <TouchableOpacity onPress={onprs} style={styles.button} >
       <View style={[
                         styles.btnContinue,
                         {
                             backgroundColor: otp? '#434343' : '#AFAFAF'
                         }
                     ]}>
-
-        <Text style={styles.buttonText}>Submit</Text>
+       
+        <Text style={styles.buttonText}>Veify OTP</Text>
         </View>
       </TouchableOpacity>
     </View>
@@ -54,7 +61,15 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#f5f5f5',
+    backgroundColor: 'white',
+  },
+  text: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    color:'#050507',
+    fontFamily: 'Merriweather',
+    top:80,
+    right:30
   },
   title: {
     fontSize: 24,
