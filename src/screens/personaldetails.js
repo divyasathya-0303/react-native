@@ -16,14 +16,12 @@ export default function name(props){
     const handleNameChange = (text) => {
       setName(text);
     };
-  
     const handleGenderSelection = (selectedGender) => {
       setGender(selectedGender);
       setIsDropdownVisible(false);
     };
     const increaseProgress = () => {
       if (progress < 1) {
-        // Increase the progress by 0.1 in each step
         setProgress(prevProgress => Math.min(prevProgress + 0.1, 1));
       };
     };
@@ -33,18 +31,10 @@ export default function name(props){
     const isname=name.trim() !== '';
     const isgender=gender.trim() !== '';
     useEffect(() => {
-      // You can also use this effect to reset the progress when needed.
-      // For example, if the progress should reset to 0 after some action is completed.
       if (progress === 1) {
         setProgress(0);
       }
     }, [progress]);
-  
-    // const handleSaveData = () => {
-    //   console.log('Name:', name);
-    //   console.log('Gender:', gender);
-    //     };
-  
     return (
       <View style={styles.container}>
         <StatusBar
@@ -58,14 +48,12 @@ export default function name(props){
       <Image source={require('../../assets/images/backicon.png')} />
       </TouchableOpacity>
       </View>
-        {/* <Text style={{color:'#050507',fontWeight:'bold',fontsize:'20',top:-50}}>Personal Details</Text> */}
-        <Text style={styles.text}>personal Details</Text>
+              <Text style={styles.text}>personal Details</Text>
       <View style={{ height:60, width: '100%', backgroundColor: '#fff' ,justifyContent: 'center', alignItems: 'center' ,position: 'relative'}}>
         <Bar progress={progress} width={300} borderWidth={0} unfilledColor="#ccc" style={{position: 'absolute', top: 0}}/>
       </View>
         <Text style={{color:'#272727',fontsize:40,top:-100}}>Enter your personal details to setup your account</Text>
         <Text style={styles.textTitle}>Your Name</Text>
-        {/* <View style={{backgroundColor:'#F0F0F0'}}> */}
         <TextInput
           style={styles.input}
           onChangeText={handleNameChange}
@@ -73,7 +61,6 @@ export default function name(props){
           placeholder="Enter your name"
           placeholderTextColor="#8B8F93"
         />
-        {/* </View> */}
         <Text style={styles.textTitle}>Select Gender</Text>
         <TouchableOpacity
           style={styles.dropdownButton}
@@ -100,7 +87,6 @@ export default function name(props){
         )}
         <View style={{marginBottom:60}}>
         <TouchableOpacity 
-        //style={styles.saveButton} 
         onPress={next} 
         disabled={!isname || !isgender}>
         <View
@@ -168,8 +154,7 @@ export default function name(props){
      // borderWidth: 1,
      // justifyContent: 'center',
       alignItems: 'center',
-     // text:'black',
-     // backgroundColor:'blue'
+     // text:'black'
     },
     btnContinue: {
       width: 320,
@@ -183,16 +168,6 @@ export default function name(props){
       color: '#ffffff',
       alignitem: 'center',
     },
-    // saveButton: {
-    //   width: '100%',
-    //   height: 40,
-    //   //backgroundColor: 'blue',
-    //   justifyContent: 'center',
-    //   alignItems: 'center',
-    //   backgroundColor:'#AFAFAF',
-    //   bottom:-200
-    //   //marginBottom:
-    // },
   });
   
 

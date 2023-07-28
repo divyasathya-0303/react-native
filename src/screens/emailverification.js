@@ -4,21 +4,16 @@ import { View, TextInput, TouchableOpacity, Text, StyleSheet ,Image} from 'react
 const EmailForm = (props) => {
   const [email, setEmail] = useState('');
   const isEmailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-
   const handleEmailChange = (text) => {
     setEmail(text);
   };
-
   const handleSubmit = () => {
-    // Submit logic here
    props.navigation.navigate('OTP3');
   };
-
   return (
     <View style={styles.container}>
        <Text>Email Id Verification</Text>
        <View style={{top:55,right:150}}> 
-       {/* <Text style={styles.text}>Mobile Verification</Text> */}
        <TouchableOpacity onPress={()=>{props.navigation.navigate('mobileverification')}}>
       <Image source={require('../../assets/images/backicon.png')} />
       </TouchableOpacity> 
@@ -40,7 +35,6 @@ const EmailForm = (props) => {
     </View>
   );
 };
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,

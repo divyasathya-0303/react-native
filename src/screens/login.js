@@ -43,7 +43,7 @@ export default function Login(props) {
   const onprsss=()=>{
     props.navigation.navigate('gender');
   };
-  const isEmailValid = email.trim() !== ''; // Check if email is not empty
+  const isEmailValid = email.trim() !== ''; 
   const isphone = phonenumber.trim() !== '';
   return (
     <KeyboardAvoidingView style={styles.container}>

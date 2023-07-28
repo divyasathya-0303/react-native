@@ -22,7 +22,6 @@ const OtpPage = (props) => {
   const handleSubmitOtp = () => {
     console.log('OTP submitted:', otp);
   };
-
   return (
     <View style={styles.container}>
         <Text style={styles.text}>Mobile Verification</Text>

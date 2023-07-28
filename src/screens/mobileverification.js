@@ -26,9 +26,6 @@ export default function mobile(props)
       </TouchableOpacity>
       </View>
       <Text style={styles.text}>Mobile Verification</Text>
-      {/* <TouchableOpacity onPress={()=>{props.navigation.navigate('organizationaldetail')}}>
-      <Image source={require('../../assets/images/backicon.png')} />
-      </TouchableOpacity> */}
       <Text style={{color:'#272727',fontWeight:'bold'}}>Enter your mobile number to verrify</Text>
      <ProgressBar progress="0.6" />  
      <>
@@ -36,7 +33,7 @@ export default function mobile(props)
               <View style={styles.openDilogView}>
                 {/* <TextInput       
                                    <ProgressBar progress="0.6"/>
-          placeholder="Enter Phone Number"
+                                        placeholder="Enter Phone Number"
                                         placeholderTextColor="#8B8F93"
                                         keyboardType="numeric"
                                         value={phonenumber}
@@ -63,11 +60,9 @@ export default function mobile(props)
                 />
               </View>
             </>
-            {/* <View style={{marginBottom:500}}> */}
-           <TouchableOpacity style={styles.saveButton} onPress={next} >
+                       <TouchableOpacity style={styles.saveButton} onPress={next} >
                  <Text>Continue</Text>
             </TouchableOpacity>
-          {/* </View> */}
         </View>
             );
 };
@@ -88,7 +83,6 @@ const styles=StyleSheet.create({
     top:5,
   },
 textTitle: {
-  //marginBottom: 0,
   marginTop: 2,
   fontSize: 15,
   alignContent: 'flex-start',
@@ -96,7 +90,6 @@ textTitle: {
 },saveButton: {
   width: '100%',
   height: 40,
-  //backgroundColor: 'blue',
   justifyContent: 'center',
   alignItems: 'center',
   backgroundColor:'#AFAFAF',
@@ -104,8 +97,6 @@ textTitle: {
   top:400
  
 }
-
-
 }
 )
 

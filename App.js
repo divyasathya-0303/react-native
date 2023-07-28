@@ -5,12 +5,12 @@ import { createStackNavigator } from '@react-navigation/stack';
 import login from './src/screens/login';
 import home from './src/screens/Home';
 import OTPVerification from './src/screens/OTPVerification';
-import gender from './src/screens/gender';
+import personaldetails from './src/screens/personaldetails';
 import organizationaldetail from './src/screens/organizationaldetail';
 import mobileverification from './src/screens/mobileverification';
-import OTP2 from './src/screens/OTP2';
-import everify from './src/screens/everify';
-import OTP3 from './src/screens/OTP3';
+import mobileOTP from './src/screens/mobileOTP';
+import emailverification from './src/screens/emailverification';
+import emailOTP from './src/screens/emailOTP';
 import faichevrondown from './src/screens/faichevrondown';
 import image from './src/screens/image';
 import modal from './src/screens/modal';
@@ -25,11 +25,11 @@ return(
         <Stack.Screen name="home" component={home}  options={{ headerShown: false }}/>
         <Stack.Screen name="login" component={login}  options={{ headerShown: false }}/> 
         <Stack.Screen name="OTPVerification" component={OTPVerification}  options={{ headerShown: false }}/> 
-        <Stack.Screen name="gender" component={gender}  options={{ headerShown: false }}/> 
+        <Stack.Screen name="personaldetails" component={personaldetails}  options={{ headerShown: false }}/> 
         <Stack.Screen name="organizationaldetail" component={organizationaldetail}  options={{ headerShown: false }}/> 
         <Stack.Screen name="mobileverification" component={mobileverification}  options={{ headerShown: false }}/> 
-        <Stack.Screen name="OTP2" component={OTP2}  options={{ headerShown: false }}/> 
-        <Stack.Screen name="everify" component={everify}  options={{ headerShown: false }}/> 
+        <Stack.Screen name="mobileOTP" component={mobileOTP}  options={{ headerShown: false }}/> 
+        <Stack.Screen name="emailverification" component={emailverification}  options={{ headerShown: false }}/> 
         <Stack.Screen name="OTP3" component={OTP3}  options={{ headerShown: false }}/> 
         <Stack.Screen name="image" component={image}  options={{ headerShown: false }}/> 
         <Stack.Screen name="faichevrondown" component={faichevrondown}  options={{ headerShown: false }}/> 

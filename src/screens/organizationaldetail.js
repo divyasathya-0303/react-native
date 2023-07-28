@@ -5,13 +5,7 @@ import ProgressBar from '../components/Progressbar';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
-
 library.add(faChevronDown);
-
-
-
-//import { TouchableOpacity } from 'react-native-gesture-handler';
-
 export default function organizationaldetail(props) {
   const next=()=>{
     props.navigation.navigate('mobileverification');
@@ -34,8 +28,6 @@ export default function organizationaldetail(props) {
     <Text style={{color:'#272727',fontweight:'bold'}}>Enter your organizational details to setup your account </Text>
     {/* <Text style={{fontFamily: 'Merriweather-Regular',color:'black' }} className={`text-[20px]`}>black</Text> 
      <View style={{ height:60, width: '100%', backgroundColor: '#fff',justifyContent: 'center', alignItems: 'center'}}> */}
-    
-
         <TouchableOpacity style={styles.saveButton} onPress={next} >
           <Text>Continue</Text>
         </TouchableOpacity>

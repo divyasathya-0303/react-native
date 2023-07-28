@@ -2,34 +2,25 @@ import React, { useState } from 'react';
 import { View, TextInput, TouchableOpacity, Text, StyleSheet, Switch, Modal } from 'react-native';
 
 const EmailPhoneForm = () => {
-  const [isEmailInput, setIsEmailInput] = useState(true); // To track if email input is active
-  const [inputValue, setInputValue] = useState(''); // For storing the input value
-  const [isModalVisible, setIsModalVisible] = useState(false); // To track if the modal is visible
+  const [isEmailInput, setIsEmailInput] = useState(true); 
+  const [inputValue, setInputValue] = useState(''); 
+  const [isModalVisible, setIsModalVisible] = useState(false); 
 
   const handleInputChange = (text) => {
     setInputValue(text);
   };
-
   const handleSwitchToggle = () => {
-    // Toggle between email and phone number input
     setIsEmailInput((prevValue) => !prevValue);
-    setInputValue(''); // Clear the input value when switching
+    setInputValue(''); 
   };
-
-  // Validate email format
   const isEmailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(inputValue);
-
-  // Validate phone number format (for example, assuming the phone number should be 10 digits)
   const isPhoneValid = /^\d{10}$/.test(inputValue);
-
   const isInputValid = isEmailInput ? isEmailValid : isPhoneValid;
-
   const handleSubmit = () => {
     if (isInputValid) {
       setIsModalVisible(true);
     }
   };
-
   const handleCloseModal = () => {
     setIsModalVisible(false);
   };
@@ -55,8 +46,6 @@ const EmailPhoneForm = () => {
       <TouchableOpacity style={[styles.submitButton, { backgroundColor: isInputValid ? '#434343' : '#AFAFAF' }]} onPress={handleSubmit} disabled={!isInputValid}>
         <Text style={styles.submitButtonText}>Submit</Text>
       </TouchableOpacity>
-
-      {/* Modal */}
       <Modal visible={isModalVisible} transparent={true} animationType="fade">
         <View style={styles.modalContainer}>
           <View style={styles.modalContent}>
@@ -70,9 +59,7 @@ const EmailPhoneForm = () => {
     </View>
   );
 };
-
 const styles = StyleSheet.create({
-  // ... your existing styles ...
   modalContainer: {
     flex: 1,
     justifyContent: 'center',
@@ -100,5 +87,4 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
 });
-
 export default EmailPhoneForm;
